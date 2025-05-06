@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: rgb(25, 25, 25);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .text1Animation {
+      font-size: 10rem;
+      color: transparent;
+      -webkit-text-stroke: 3px darkmagenta;
+      position: relative;
+    }
+
+    .text1Animation::before {
+      content: "Hello";
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      overflow: hidden;
+      color: darkmagenta;
+      border-right: 8px solid darkmagenta;
+      animation: textReveal 2s ease-in-out infinite;
+    }
+
+    @keyframes textReveal {
+      0%, 100% {
+        width: 0%;
+      }
+      50% {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="text1Animation">Hello</h1>
+</body>
+</html>
