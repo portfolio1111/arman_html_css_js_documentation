@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .curveUnderline{
+      position: relative;
+      color: green;
+    }
+    .curveUnderline:after{
+      content: '';
+      position: absolute;
+      width: 100%;
+      border-top: solid 3px green;
+      left: 0;
+      bottom: -15px;
+      border-radius: 50%;
+      height: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello <span class="curveUnderline">Arman.</span></h1>
+</body>
+</html>
