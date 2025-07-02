@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zoom & Fullscreen Demo</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      #zoomContainer {
+        transition: transform 0.3s ease;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">ZoomApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="fullscreenBtn" title="Toggle Fullscreen">
+                <i id="fullscreenIcon" class="fa-solid fa-maximize"></i>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="zoomContainer">
+      <div class="container mt-5">
+        <h1 class="text-center">Zoom & Fullscreen Example</h1>
+        <p class="lead text-center">Click the icon in the top right to enter or exit fullscreen mode.</p>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+    <!-- Fullscreen Toggle Script -->
+    <script>
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const fullscreenIcon = document.getElementById('fullscreenIcon');
+
+      fullscreenBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().then(() => {
+            fullscreenIcon.classList.remove('fa-maximize');
+            fullscreenIcon.classList.add('fa-minimize');
+          });
+        } else {
+          document.exitFullscreen().then(() => {
+            fullscreenIcon.classList.remove('fa-minimize');
+            fullscreenIcon.classList.add('fa-maximize');
+          });
+        }
+      });
+
+      // Also handle when the user exits fullscreen by pressing ESC or other system method
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          fullscreenIcon.classList.remove('fa-minimize');
+          fullscreenIcon.classList.add('fa-maximize');
+        } else {
+          fullscreenIcon.classList.remove('fa-maximize');
+          fullscreenIcon.classList.add('fa-minimize');
+        }
+      });
+    </script>
+
+  </body>
+</html>
